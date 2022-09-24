@@ -1,21 +1,20 @@
+#include <cstdlib>
 #include <iostream>
 #include "int.h"
 #include "d_stree.h"
+#include "time.h"
+#include <random>
 using namespace std;
 
 int main(){
-    cout<< "hello"<<endl;
-    stree<integer> btree;
+    srand(time(NULL));
+    for(int i=0;i<10000;i++){
+        int random=rand() % 7 ;
+        cout<<random<<endl;
+        
+    }
+    
 
-    integer number=integer(5);
-    integer number2=integer(5);
-
-    cout<<"value: "<<number.getInt()<<endl;
-    cout<< "Count: "<<number.getCount()<<endl;
-    number.incCount();
-    number.incCount();
-    cout<< "Count: "<<number.getCount()<<endl;
-    cout<<btree.size()<<endl;
   
 
 
