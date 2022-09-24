@@ -1,6 +1,8 @@
 #ifndef Integer_H
 #define Integer_H
 #include <ostream>
+#include <string>
+using namespace std;
 
 class integer
 {
@@ -43,9 +45,14 @@ class integer
             }
             return false;
         }
+
+     
 		
 		// output object in format intValue (count)
-		friend std::ostream& operator<< (std::ostream& ostr, const integer& obj);
+		friend std::ostream& operator<< (std::ostream& ostr, const integer& obj){
+            ostr<<obj.intValue <<" ("<<obj.count<<")";
+            return ostr;
+        }
 		
 	private:
 		// the integer and its count

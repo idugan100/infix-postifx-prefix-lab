@@ -3,8 +3,9 @@
 
 #ifndef NULL
 #include <cstddef>
-#endif  // NULL
 #include <iostream>
+#endif  // NULL
+
 #include <iomanip>		// for setw()
 #include <strstream>		// for format conversion
 #include <string>			// node data formatted as a string
@@ -51,7 +52,7 @@ class stnodeShadow
 		{}
 };
 
-template <typename T> 
+template <typename T>
 class stree
 {
 	public:
@@ -106,6 +107,18 @@ static bool graphWinOpen;
 
 		int empty() const;
 			// indicate whether the tree is empty
+        void inOrder(){
+            inOrderInner(root);
+
+        }
+        void inOrderInner(stnode<T>* t){
+            if(t){
+                inOrderInner(t->left);
+                cout<<t->nodeValue<<endl;
+                inOrderInner(t->right);
+            }
+
+        }
 		int size() const;
 			// return the number of data items in the tree
 
@@ -119,8 +132,14 @@ static bool graphWinOpen;
 		// is not in the tree
 		pair<iterator, bool> insert(const T& item)
 		{
+            
 			// t is current node in traversal, parent the previous node
-			stnode<T> *t = root, *parent = NULL, *newNode;
+            stnode<T> *parent = NULL;
+			
+            
+            stnode<T> *t = root;
+            stnode<T> *newNode;
+            
 
 			// terminate on on empty subtree
 			while(t != NULL)
@@ -130,8 +149,9 @@ static bool graphWinOpen;
 				// if a match occurs, return a pair whose iterator
 				// component points at item in the tree and whose
 				// bool component is false
-				if (item == t->nodeValue)
-					return pair<iterator, bool> (iterator(t, this), false);
+				if (item == t->nodeValue){
+                    t->nodeValue.incCount();
+				    return pair<iterator, bool> (iterator(t, this), false);}
 				else if (item < t->nodeValue)
 					t = t->left;
 				else 

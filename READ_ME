@@ -1,0 +1,6 @@
+Build: make, ./lab5
+Time: 2 hours
+Comments: I implemented my own inOrderOutput() to diplay the values in the stree
+    class lines 110-120 os d_stree.h
+
+
